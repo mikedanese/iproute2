@@ -47,6 +47,8 @@ static int ipvlan_parse_opt(struct link_util *lu, int argc, char **argv,
 				mode = IPVLAN_MODE_L2;
 			else if (strcmp(*argv, "l3") == 0)
 				mode = IPVLAN_MODE_L3;
+			else if (strcmp(*argv, "l3s") == 0)
+				mode = IPVLAN_MODE_L3S;
 			else
 				return mode_arg();
 
@@ -78,7 +80,8 @@ static void ipvlan_print_opt(struct link_util *lu, FILE *f, struct rtattr *tb[])
 
 			fprintf(f, " mode %s ",
 				mode == IPVLAN_MODE_L2 ? "l2" :
-				mode == IPVLAN_MODE_L3 ? "l3" : "unknown");
+				mode == IPVLAN_MODE_L3 ? "l3" :
+				mode == IPVLAN_MODE_L3S ? "l3s" : "unknown");
 		}
 	}
 }
